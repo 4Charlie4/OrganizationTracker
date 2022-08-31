@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS employee;
 
 CREATE TABLE department (
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(30) NOT NULL
+    title VARCHAR(30) NOT NULL
 );
 
 CREATE TABLE roles (
