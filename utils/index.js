@@ -15,7 +15,6 @@ class Organization {
           choices: [
             "View All Employees",
             "Add Employee",
-            "Update Employee Role",
             "View All Roles",
             "Add Role",
             "View all Departments",
