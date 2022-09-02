@@ -16,13 +16,13 @@ VALUES
 ("Lawyer", 200000, 4),
 ("Account Manager", 100000, 2);
 
-INSERT INTO employee (first_name, last_name, roles_id, manager_id)
+INSERT INTO employee (first_name, last_name, roles_id)
 VALUES
-("Bill", "Bork", 2, 2),
-("George", "Borden", 1, NULL),
-("John", "Doe", 3, 7),
-("Jane", "Doe", 4, 5),
-("Rachel", "Jenson", 5, NULL),
-("Cody", "Rales", 6, 5),
-("Charlotte", "Bin", 8, NULL),
-("Kayla", "Fringe", 7, NULL);
+("Bill", "Bork", 2),
+("George", "Borden", 1),
+("John", "Doe", 3 ),
+("Jane", "Doe", 4 ),
+("Rachel", "Jenson", 5),
+("Cody", "Rales", 6 ),
+("Charlotte", "Bin", 8 ),
+("Kayla", "Fringe", 7 );

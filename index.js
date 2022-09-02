@@ -1,5 +1,5 @@
 const db = require("./db/connection");
-const cTable = require("console.table");
+
 const Organization = require("./utils/index");
 
 db.connect((err) => {
