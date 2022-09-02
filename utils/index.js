@@ -27,6 +27,14 @@ class Organization {
       .then(({ userChoice }) => {
         if (userChoice === "View All Employees") this.viewAllEmployees();
         if (userChoice === "Add Employee") this.addEmployee();
+        if (userChoice === "View All Roles") this.viewRoles();
+        if (userChoice === "Add Role") this.addRoles();
+        if (userChoice === "View all Departments") this.viewDepartment();
+        if (userChoice === "Add Department") this.addDepartment();
+        if (userChoice === "Exit") {
+          console.log("Bye");
+          return;
+        }
       });
   }
   //displays employees
@@ -69,6 +77,80 @@ class Organization {
         });
       });
   }
+
+  viewRoles() {
+    const query = `SELECT * FROM roles`;
+
+    db.query(query, (err, res) => {
+      if (err) throw err;
+      console.table(res);
+      this.init();
+    });
+  }
+
+  addRoles() {
+    inquirer
+      .prompt([
+        {
+          type: "input",
+          name: "title",
+          message: "What is the name the role?",
+        },
+        {
+          type: "input",
+          name: "salary",
+          message: "What is the salary?",
+        },
+        {
+          type: "number",
+          name: "department",
+          message: "What is the id  the department?",
+        },
+      ])
+      .then(({ title, salary, department }) => {
+        const query = `INSERT INTO roles (title, salary, department_id) VALUES (?,?,?);`;
+        const params = [title, salary, department];
+
+        db.query(query, params, (err, res) => {
+          if (err) throw err;
+          this.viewRoles();
+          this.init();
+        });
+      });
+  }
+
+  viewDepartment() {
+    const query = `SELECT * FROM department;`;
+
+    db.query(query, (err, res) => {
+      if (err) throw err;
+      console.table(res);
+      this.init();
+    });
+  }
+
+  addDepartment() {
+    inquirer
+      .prompt([
+        {
+          type: "input",
+          name: "title",
+          message: "What is the name of the department?",
+        },
+      ])
+      .then(({ title }) => {
+        const query = `INSERT INTO department (title) VALUES (?)`;
+        const params = [title];
+
+        db.query(query, params, (err, res) => {
+          if (err) throw err;
+          this.viewDepartment();
+          this.init();
+        });
+      });
+  }
+
+  getEmployees() {}
 }
 
 module.exports = Organization;
